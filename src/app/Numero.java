@@ -1,7 +1,7 @@
 package app;
 
 public enum Numero {
-	UNO(1),
+	AS(11),
 	DOS(2),
 	TRES(3),
 	CUATRO(4),
@@ -15,13 +15,15 @@ public enum Numero {
 	CABALLO(10),
 	REY(10);
 	
-	Numero(int value) {
-		this.value=value;
+	private final int VALUE;
+	
+	Numero(int VALUE) {
+		this.VALUE=VALUE;
 	}
 
-	private final int value;
+	
 	
 	public int getValue() {
-		return value;
+		return VALUE;
 	}
 }
