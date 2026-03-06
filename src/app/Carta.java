@@ -23,7 +23,7 @@ public class Carta {
 
 	@Override
 	public String toString() {
-		return String.format("%s de %d",numero,palo);
+		return String.format("%s de %s",numero,palo);
 	}
 	
 	
