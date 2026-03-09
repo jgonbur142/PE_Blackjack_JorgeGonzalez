@@ -18,11 +18,14 @@ public class Partida {
 	 * Se encarga de montar el flujo de la partida
 	 */
 	public void iniciar() {
+		jugador.vaciarMano();
+		crupier.vaciarMano();
+		
 		String nombreJugador;
 		
-		consola.mostrarMensaje("----- Partida iniciada -----");
+		consola.mostrarMensaje("----- PARTIDA INICIADA -----");
 		baraja.barajar();
-		consola.mostrarMensaje("----- Mazo barajado -----");
+		consola.mostrarMensaje("----- MAZO BARAJADO -----");
 		
 		consola.mostrarMensaje("Introduce el nombre del Jugador:");
 		nombreJugador = consola.leerEntrada();
@@ -33,6 +36,24 @@ public class Partida {
 		jugarTurno();	
 		jugarCrupier();
 		resultado();
+	}
+	
+	private void mostrarEstado() {
+		consola.mostrarMensaje("");
+		consola.mostrarMensaje("-----ESTADO DE LA MESA: -----");
+		
+		consola.mostrarMensaje("Crupier: ");
+		consola.mostrarMensaje(crupier.getMano().toString());
+		consola.mostrarMensaje("Puntuación: "+crupier.calcularPuntuacion());
+		consola.mostrarMensaje("");
+		
+		consola.mostrarMensaje(jugador.getNombre()+":");
+		consola.mostrarMensaje(jugador.getMano().toString());
+		
+		consola.mostrarMensaje("Puntuación: "+jugador.calcularPuntuacion());
+		
+		consola.mostrarMensaje("------------------------------");
+		consola.mostrarMensaje("");
 	}
 	
 	/**
@@ -50,28 +71,36 @@ public class Partida {
 	 */
 	private void jugarTurno() {
 		boolean quiereCarta = true;
+		Carta nueva;
+		
 		while (quiereCarta && jugador.calcularPuntuacion()<21) {
-			consola.mostrarMensaje("Turno de "+jugador.toString());
-			consola.mostrarMensaje("Puntuación: "+jugador.calcularPuntuacion());
+			
+			mostrarEstado();
 			
 			consola.mostrarMensaje("¿Quieres otra carta? (S/N)");
 			quiereCarta = consola.leerOpcion('S', 'N');
 			
 			if (quiereCarta) {
-				jugador.robarCarta(baraja.darCarta());
+				nueva = baraja.darCarta();
+				jugador.robarCarta(nueva);
+				consola.mostrarMensaje("Carta robada: "+nueva);
+				
 			}
 		}
+		mostrarEstado();
 	}
 	
 	/**
 	 * Se encarga de la lógica del turno del crupier, juega de forma automática
 	 */
 	private void jugarCrupier() {
-		consola.mostrarMensaje("Turno del crupier");
+		consola.mostrarMensaje("");
+		consola.mostrarMensaje("-----TURNO DEL CRUPIER-----");
 		while (crupier.calcularPuntuacion()<17) {
 			crupier.robarCarta(baraja.darCarta());
 		}
-		consola.mostrarMensaje(crupier.toString());
+		consola.mostrarMensaje("Mano del crupier: "+crupier.getMano());
+		consola.mostrarMensaje("Puntuación crupier: "+crupier.calcularPuntuacion());
 	}
 	
 	/**
@@ -81,7 +110,8 @@ public class Partida {
 		int puntJugador = jugador.calcularPuntuacion();
 		int puntCrupier = crupier.calcularPuntuacion();
 		
-		consola.mostrarMensaje("----- Resultados: -----");
+		consola.mostrarMensaje("");
+		consola.mostrarMensaje("----- RESULTADOS: -----");
 		if (puntJugador>21) {
 			consola.mostrarMensaje("Te has pasado de 21. Gana el crupier.");
 		}else if(puntCrupier>21 || puntJugador > puntCrupier) {

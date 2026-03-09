@@ -1,29 +1,38 @@
 package app;
 
 public enum Numero {
-	AS(11),
-	DOS(2),
-	TRES(3),
-	CUATRO(4),
-	CINCO(5),
-	SEIS(6),
-	SIETE(7),
-	OCHO(8),
-	NUEVE(9),
-	DIEZ(10),
-	SOTA(10),
-	CABALLO(10),
-	REY(10);
+	AS("A",11),
+	DOS("2",2),
+	TRES("3",3),
+	CUATRO("4",4),
+	CINCO("5",5),
+	SEIS("6",6),
+	SIETE("7",7),
+	OCHO("8",8),
+	NUEVE("9",9),
+	DIEZ("10",10),
+	SOTA("J",10),
+	CABALLO("Q",10),
+	REY("K",10);
 	
-	private final int VALUE;
+	private final String simbolo;
+	private final int valor;	
 	
-	Numero(int VALUE) {
-		this.VALUE=VALUE;
+	Numero(String simbolo, int valor) {
+		this.simbolo=simbolo;
+		this.valor=valor;
 	}
-
 	
+	public int getValor() {
+		return valor;
+	}
 	
-	public int getValue() {
-		return VALUE;
+	public String getSimbolo() {
+		return simbolo;
+	}
+	
+	@Override
+	public String toString() {
+		return simbolo;
 	}
 }

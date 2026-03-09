@@ -10,7 +10,7 @@ public class Carta {
 	}
 
 	public int valorCarta() {
-		return numero.getValue();
+		return numero.getValor();
 	}
 	
 	public Numero getNumero() {
@@ -23,7 +23,7 @@ public class Carta {
 
 	@Override
 	public String toString() {
-		return String.format("%s de %s",numero,palo);
+		return String.format("%s %s",numero,palo);
 	}
 	
 	

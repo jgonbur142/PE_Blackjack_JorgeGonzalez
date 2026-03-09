@@ -3,7 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jugador {
+public class Jugador implements IJugador {
 	
 	private String nombre;
 	private List<Carta> mano;

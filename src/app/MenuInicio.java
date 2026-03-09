@@ -14,11 +14,13 @@ public class MenuInicio {
 		String opcion="";
 		
 		do {
+			consola.mostrarMensaje("");
 			mostrarLogo();
 			consola.mostrarMensaje("------------");
 			consola.mostrarMensaje("- 1. Jugar -");
 			consola.mostrarMensaje("- 2. Salir -");
 			consola.mostrarMensaje("------------");
+			consola.mostrarMensaje("");
 			
 			opcion = consola.leerEntrada();
 			
