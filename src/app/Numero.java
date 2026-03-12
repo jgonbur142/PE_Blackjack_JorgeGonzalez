@@ -1,5 +1,9 @@
 package app;
 
+/**
+ * Define los posibles valores y símbolos de una carta de blackjack.
+ * Cada constante incluye una representación en texto y valor entero.
+ */
 public enum Numero {
 	AS("A",11),
 	DOS("2",2),
@@ -18,6 +22,11 @@ public enum Numero {
 	private final String simbolo;
 	private final int valor;	
 	
+	/**
+	 * Constructor que asocia un símbolo y su valor.
+	 * @param simbolo Representación textual de la carta.
+	 * @param valor Representación de su valor.
+	 */
 	Numero(String simbolo, int valor) {
 		this.simbolo=simbolo;
 		this.valor=valor;

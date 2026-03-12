@@ -1,14 +1,16 @@
 package app;
 
 import java.util.Scanner;
-
+/**
+ * Gestiona la entrada por teclado y salida por pantalla
+ */
 public class Consola {
 
 	private Scanner teclado = new Scanner(System.in);
 	
 	/**
 	 * Lee la cadena introducida por el usuario
-	 * @return
+	 * @return Cadena de caracteres introducida
 	 */
 	public String leerEntrada() {// devuelve una cadena de caracteres
 		return teclado.nextLine();
@@ -17,9 +19,9 @@ public class Consola {
 	/**
 	 * Lee la opción introducida por el usuario y devuelve true si coincide con affirmativeValue y false si coincide con negativeValue 
 	 * 
-	 * @param affirmativeValue
-	 * @param negativeValue
-	 * @return
+	 * @param affirmativeValue Caracter que representa el "Sí"
+	 * @param negativeValue Caracter que representa el "No"
+	 * @return true si {$affirmativeValue}, false si {$negativeValue}
 	 */
 	public boolean leerOpcion(char affirmativeValue, char negativeValue) {// devuelve un booleano de forma que: [coincide con affirmativeValue -> true | coincide con negativeValue -> false]
 		char input;
@@ -38,7 +40,7 @@ public class Consola {
 	
 	/**
 	 * Lee un caracter introducido por el usuario, controla que sea un solo caracter.
-	 * @return
+	 * @return Un solo caracter leído
 	 */
 	private char leerCaracter() {
 		String input;
@@ -55,7 +57,7 @@ public class Consola {
 	
 	/**
 	 * Muestra por consola el mensaje que recibe por parámetro
-	 * @param mensaje
+	 * @param mensaje El texto a mostrar.
 	 */
 	public void mostrarMensaje(String mensaje) {
 		System.out.println(mensaje);

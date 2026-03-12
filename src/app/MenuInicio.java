@@ -1,14 +1,24 @@
 package app;
 
+/**
+ * Se encarga de gestionar el menú principal del juego.
+ * Permite elegir entre iniciar una partida o salir de la aplicación.
+ */
 public class MenuInicio {
+	
 	private Consola consola;
 	
+	/**
+	 * Constructor que inicializa la consola para el menú.
+	 */
 	public MenuInicio() {
 		this.consola = new Consola();
 	}
 	
 	/**
-	 * Inicia el menú y lo muestra por consola
+	 * Gestiona el bucle principal del menú.
+	 * Muestra las opciones del usuario y procesa la entrada por consola del mismo.
+	 * El bucle se detiene cuando el usuario elige salir del programa.
 	 */
 	public void iniciar() {
 		String opcion="";

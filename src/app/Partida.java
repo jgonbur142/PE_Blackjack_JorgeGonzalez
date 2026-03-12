@@ -1,5 +1,9 @@
 package app;
 
+/**
+ * Gestiona e flujo de la partida.
+ * Controla el reparto de cartas, los turnos del jugador y del crupier, y determina el ganador de la partida.
+ */
 public class Partida {
 	
 	private Baraja baraja;
@@ -7,6 +11,10 @@ public class Partida {
 	private Jugador crupier;
 	private Consola consola;
 	
+	/**
+	 * Inicializa los componentes necesarios para empezar a jugar.
+	 * Baraja, consola y jugadores.
+	 */
 	public Partida() {
 		this.baraja = new Baraja();
 		this.consola = new Consola();
@@ -15,7 +23,8 @@ public class Partida {
 	}
 	
 	/**
-	 * Se encarga de montar el flujo de la partida
+	 * Marca el flujo de vida de una partida.
+	 * Preparación, reparto de cartas, turnos y resultado.
 	 */
 	public void iniciar() {
 		jugador.vaciarMano();
@@ -38,6 +47,10 @@ public class Partida {
 		resultado();
 	}
 	
+	/**
+	 * Muestra el estado de la mesa en cada turno.
+	 * Es llamado por {@link jugarTurno()} cada iteración hasta que termina la partida.
+	 */
 	private void mostrarEstado() {
 		consola.mostrarMensaje("");
 		consola.mostrarMensaje("-----ESTADO DE LA MESA: -----");
@@ -57,7 +70,7 @@ public class Partida {
 	}
 	
 	/**
-	 * Reparte dos cartas a cada jugador para empezar la partida
+	 * Se encarga de repartir las cartas iniciales a cada jugador.
 	 */
 	private void repartirCartas() {
 		jugador.robarCarta(baraja.darCarta());
@@ -67,7 +80,8 @@ public class Partida {
 	}
 	
 	/**
-	 * Se encarga de la lógica del turno del jugador
+	 * Gestiona el turno del usuario, permitiendo pedir carta o plantarse.
+	 * Cuando la puntuación supera 21, no se juegan más turnos.
 	 */
 	private void jugarTurno() {
 		boolean quiereCarta = true;
@@ -91,7 +105,8 @@ public class Partida {
 	}
 	
 	/**
-	 * Se encarga de la lógica del turno del crupier, juega de forma automática
+	 * Gestiona el turno del crupier, decide si pedir carta o no según {@link calcularPuntuacion()}.
+	 * Cuando la puntuación supera 17, no pide más cartas.
 	 */
 	private void jugarCrupier() {
 		consola.mostrarMensaje("");

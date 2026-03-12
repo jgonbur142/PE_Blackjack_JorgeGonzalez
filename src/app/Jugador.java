@@ -3,19 +3,27 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementación de un jugador.
+ * Gestiona el nombre del jugador, su mano y el cálculo de la puntuación.
+ */
 public class Jugador implements IJugador {
 	
 	private String nombre;
 	private List<Carta> mano;
 	
+	/**
+	 * Crea un jugador nuevo con su nombre y una mano vacía.
+	 * @param nombre 
+	 */
 	public Jugador(String nombre) {
 		this.nombre = nombre;
 		this.mano = new ArrayList<>();
 	}
 	
 	/**
-	 * El jugador roba una carta
-	 * @param carta
+	 * Controla que haya una carta que robar y la roba.
+	 * @param carta que recibe de {@link Carta}.
 	 */
 	public void robarCarta(Carta carta) {
 		if (carta != null) {
@@ -25,7 +33,7 @@ public class Jugador implements IJugador {
 	
 	/**
 	 * Se calcula el valor de cada carta individual y se suma, se guarda si la carta es un As para reajustar la puntuación.
-	 * @return 
+	 * @return Puntuación ajustada teniendo en cuenta el As.
 	 */
 	public int calcularPuntuacion() {
 		int total=0;
@@ -50,7 +58,7 @@ public class Jugador implements IJugador {
 	}
 	
 	/**
-	 * Deja la mano actual sin cartas.
+	 * @Inherit
 	 */
 	public void vaciarMano() {
 		mano.clear();

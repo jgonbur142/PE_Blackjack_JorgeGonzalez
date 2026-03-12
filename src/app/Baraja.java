@@ -3,18 +3,25 @@ package app;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * Representación de una baraja de cartas francesa
+ * Se encarga de crear, mezclar y dar las cartas de la baraja 
+ */
 public class Baraja {
+	
 	
 	private List<Carta> cartas;
 	
+	/**
+	 * Constructor que inicializa la lista de cartas y genera la baraja
+	 */
 	public Baraja() {
 		this.cartas = new ArrayList<>();
 		crearBaraja();
 	}
 
 	/**
-	 * El constructor de la baraja ya crea automáticamente la baraja
+	 * Genera la baraja al completo (4 palos * 13 Números = 52 cartas)
 	 */
 	private void crearBaraja() {
 		for (Palo p : Palo.values()) {
@@ -33,7 +40,7 @@ public class Baraja {
 	
 	/**
 	 * "Levanta" la primera carta de la baraja, si no quedan cartas crea una baraja nueva
-	 * @return
+	 * @return La primera {@link Carta} de la lista.
 	 */
 	public Carta darCarta() {
 		if(cartas.isEmpty()) {
